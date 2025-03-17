@@ -5,10 +5,9 @@ import SelectController from "components/FormControllers/SelectController";
 import InputController from "components/FormControllers/InputController";
 import Button from "components/Button";
 import { FC } from "react";
-import { Props } from "./types";
-import { RegistrationStepsEnum } from "pages/Registration/types";
+import { RegistrationStepsEnum, StepProps } from "pages/Registration/types";
 
-const PhoneStep: FC<Props> = ({ handleChangeStep }) => {
+const PhoneStep: FC<StepProps> = ({ handleChangeStep }) => {
   return (
     <>
       <div className="rounded-lg p-4 bg-[#F0F2F4]">
@@ -22,9 +21,7 @@ const PhoneStep: FC<Props> = ({ handleChangeStep }) => {
         </div>
       </div>
       <FormWrapper>
-        <p className="mb-8 text-[#242426] text-[14px]">
-          Enter your phone number
-        </p>
+        <p className="text-[#242426] text-[14px]">Enter your phone number</p>
         <div className="flex flex-row gap-4">
           <SelectController
             name="phoneFormat"

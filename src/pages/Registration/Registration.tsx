@@ -9,7 +9,8 @@ import {
   RegistrationFormType,
   RegistrationStepsEnum,
 } from "./types";
-import CodeStep from "pages/Registration/components/CodeStep";
+import CodeStep from "./components/CodeStep";
+import CredentialsStep from "./components/CredentialsStep";
 
 const Registration = () => {
   const [step, setStep] = useState(RegistrationStepsEnum.PHONE);
@@ -38,6 +39,9 @@ const Registration = () => {
           )}
           {step === RegistrationStepsEnum.CODE && (
             <CodeStep handleChangeStep={handleChangeStep} />
+          )}
+          {step === RegistrationStepsEnum.CREDENTIALS && (
+            <CredentialsStep handleChangeStep={handleChangeStep} />
           )}
         </FormProvider>
       </div>

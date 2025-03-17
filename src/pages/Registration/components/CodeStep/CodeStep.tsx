@@ -1,18 +1,18 @@
-import { Props } from "./types";
 import { FC, useEffect, useState } from "react";
 import FormWrapper from "components/FormWrapper";
 import { useFormContext, useWatch } from "react-hook-form";
 import {
   RegistrationFormType,
   RegistrationStepsEnum,
+  StepProps,
 } from "pages/Registration/types";
 import PencilIcon from "components/SvgIcons/PencilIcon";
 import ReactCodeInput from "react-code-input";
 import Button from "components/Button";
 import RetryIcon from "components/SvgIcons/RetryIcon";
 
-const CodeStep: FC<Props> = ({ handleChangeStep }) => {
-  const [otp, setOtp] = useState("");
+const CodeStep: FC<StepProps> = ({ handleChangeStep }) => {
+  const [otp, setOtp] = useState("1234");
   const { control } = useFormContext<RegistrationFormType>();
 
   const phoneNumber = useWatch({
@@ -58,7 +58,7 @@ const CodeStep: FC<Props> = ({ handleChangeStep }) => {
               textAlign: "center",
             }}
           />
-          <p className="text-xs text-[#575F6E]">
+          <p className="text-[13px] text-[#575F6E]">
             Confirm phone number with code from sms message
           </p>
         </div>
@@ -70,7 +70,12 @@ const CodeStep: FC<Props> = ({ handleChangeStep }) => {
           Send again
         </Button>
       </div>
-      <Button disabled={otp?.length !== 4}>Confirm</Button>
+      <Button
+        disabled={otp?.length !== 4}
+        onClick={handleChangeStep(RegistrationStepsEnum.CREDENTIALS)}
+      >
+        Confirm
+      </Button>
     </>
   );
 };

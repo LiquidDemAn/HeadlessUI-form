@@ -14,3 +14,7 @@ export type RegistrationFormType = {
   phoneFormat: string;
   phoneNumber?: string;
 };
+
+export type StepProps = {
+  handleChangeStep: HandleChangeRegistrationStep;
+};

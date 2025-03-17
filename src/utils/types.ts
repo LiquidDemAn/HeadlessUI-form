@@ -1,5 +1,8 @@
+import { Noop } from "utils/noop";
+
 export type SvgIconProps = {
   fill?: string;
+  onClick?: Noop;
   className?: string;
 };
 

@@ -16,9 +16,11 @@ const Button: FC<PropsWithChildren<ButtonProps>> = ({
       disabled={disabled}
       className={clsx(
         className,
-        "roboto font-medium w-fit max-h-12 px-6 py-3 rounded cursor-pointer text-[#242731]",
+        "roboto font-medium w-fit max-h-12 px-6 py-3 rounded cursor-pointer text-base text-[#242731]",
         variant === "outlined" && "border-1 border-[#BBBFC1]",
-        disabled && "opacity-50 cursor-default",
+        variant === "contained" &&
+          "px-8 bg-[#007AFF] text-white border-0! popins",
+        disabled && "opacity-50 cursor-default ",
       )}
     >
       {children}
