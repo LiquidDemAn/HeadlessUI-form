@@ -9,3 +9,8 @@ export enum RegistrationStepsEnum {
 export type HandleChangeRegistrationStep = (
   step: RegistrationStepsEnum,
 ) => Noop;
+
+export type RegistrationFormType = {
+  phoneFormat: string;
+  phoneNumber?: string;
+};

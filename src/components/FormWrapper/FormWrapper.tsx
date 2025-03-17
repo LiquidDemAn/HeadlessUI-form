@@ -9,7 +9,7 @@ const FormWrapper: FC<PropsWithChildren<FormWrapperProps>> = ({
   return (
     <div
       className={clsx(
-        "border rounded-lg border-[#E2E4E5]",
+        "relative border rounded-lg border-[#E2E4E5]",
         size === "small" && "p-4",
         size === "medium" && "p-8",
       )}

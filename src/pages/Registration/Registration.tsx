@@ -4,12 +4,19 @@ import { useState } from "react";
 import Description from "components/Description";
 import { FormProvider, useForm } from "react-hook-form";
 import PhoneStep from "./components/PhoneStep";
-import { HandleChangeRegistrationStep, RegistrationStepsEnum } from "./types";
+import {
+  HandleChangeRegistrationStep,
+  RegistrationFormType,
+  RegistrationStepsEnum,
+} from "./types";
 import CodeStep from "pages/Registration/components/CodeStep";
 
 const Registration = () => {
-  const form = useForm({ defaultValues: { phoneFormat: "+1" } });
   const [step, setStep] = useState(RegistrationStepsEnum.PHONE);
+
+  const form = useForm<RegistrationFormType>({
+    defaultValues: { phoneFormat: "+1", phoneNumber: "+1 555 555-1234" },
+  });
 
   const handleChangeStep: HandleChangeRegistrationStep =
     (step: RegistrationStepsEnum) => () => {
