@@ -4,14 +4,20 @@ import { useFormContext, useWatch } from "react-hook-form";
 import TickIcon from "components/SvgIcons/TickIcon";
 import InputController from "components/FormControllers/InputController";
 import Button from "components/Button";
+import { useNavigate } from "react-router-dom";
 
 const CredentialsStep = () => {
+  const navigate = useNavigate();
   const { control } = useFormContext<RegistrationFormType>();
 
   const phoneNumber = useWatch({
     control,
     name: "phoneNumber",
   });
+
+  const handleRegister = () => {
+    navigate("/profile");
+  };
 
   return (
     <>
@@ -30,7 +36,9 @@ const CredentialsStep = () => {
           type="password"
         />
       </FormWrapper>
-      <Button variant="contained">Register Now</Button>
+      <Button variant="contained" onClick={handleRegister}>
+        Register Now
+      </Button>
     </>
   );
 };

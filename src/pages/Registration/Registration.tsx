@@ -40,9 +40,7 @@ const Registration = () => {
           {step === RegistrationStepsEnum.CODE && (
             <CodeStep handleChangeStep={handleChangeStep} />
           )}
-          {step === RegistrationStepsEnum.CREDENTIALS && (
-            <CredentialsStep handleChangeStep={handleChangeStep} />
-          )}
+          {step === RegistrationStepsEnum.CREDENTIALS && <CredentialsStep />}
         </FormProvider>
       </div>
     </div>
