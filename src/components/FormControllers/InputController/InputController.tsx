@@ -19,7 +19,7 @@ const InputController: FC<InputControllerProps> = ({
   };
 
   return (
-    <Field>
+    <Field className="flex-1">
       {label && <Label className="text-[14px] text-[#242426]">{label}</Label>}
       <div className="relative">
         <Input

@@ -24,6 +24,7 @@ const PhoneStep: FC<StepProps> = ({ handleChangeStep }) => {
         <p className="text-[#242426] text-[14px]">Enter your phone number</p>
         <div className="flex flex-row gap-4">
           <SelectController
+            fullWidth={false}
             name="phoneFormat"
             options={[{ label: "+1", value: "+1" }]}
           />

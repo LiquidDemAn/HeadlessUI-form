@@ -19,10 +19,9 @@ const Registration = () => {
     defaultValues: { phoneFormat: "+1", phoneNumber: "+1 555 555-1234" },
   });
 
-  const handleChangeStep: HandleChangeRegistrationStep =
-    (step: RegistrationStepsEnum) => () => {
-      setStep(step);
-    };
+  const handleChangeStep: HandleChangeRegistrationStep = (step) => () => {
+    setStep(step);
+  };
 
   return (
     <div className="flex flex-col justify-center max-w-[456px] mx-auto pt-14">

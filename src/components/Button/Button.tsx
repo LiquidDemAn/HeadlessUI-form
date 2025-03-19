@@ -8,6 +8,8 @@ const Button: FC<PropsWithChildren<ButtonProps>> = ({
   children,
   disabled,
   className,
+  endAdornment,
+  startAdornment,
   variant = "outlined",
 }) => {
   return (
@@ -23,7 +25,11 @@ const Button: FC<PropsWithChildren<ButtonProps>> = ({
         disabled && "opacity-50 cursor-default ",
       )}
     >
-      {children}
+      <div className="flex flex-row gap-2">
+        {startAdornment && startAdornment}
+        {children}
+        {endAdornment && endAdornment}
+      </div>
     </HUIButton>
   );
 };
