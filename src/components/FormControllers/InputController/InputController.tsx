@@ -2,13 +2,16 @@ import { Field, Input, Label } from "@headlessui/react";
 import { useController } from "react-hook-form";
 import { FC, useState } from "react";
 import { InputControllerProps } from "./types";
-import EyeIcon from "components/EyeIcon";
+import EyeIcon from "components/SvgIcons/EyeIcon";
 import TickIcon from "components/SvgIcons/TickIcon";
+import { clsx } from "clsx";
 
 const InputController: FC<InputControllerProps> = ({
   name,
   label,
+  placeholder,
   type = "text",
+  StartAdornment,
 }) => {
   const isPassword = type === "password";
   const { field } = useController({ name });
@@ -20,15 +23,24 @@ const InputController: FC<InputControllerProps> = ({
 
   return (
     <Field className="flex-1">
-      {label && <Label className="text-[14px] text-[#242426]">{label}</Label>}
+      {label && (
+        <Label className="text-[14px] text-[#242426] text">{label}</Label>
+      )}
       <div className="relative">
+        {StartAdornment && (
+          <StartAdornment className="absolute bottom-2.75 left-0" />
+        )}
         <Input
           type={isPassword && isPassVisible ? "text" : type}
           name={name}
           ref={field.ref}
           value={field.value || ""}
+          placeholder={placeholder}
           onChange={field.onChange}
-          className="w-full focus-visible:outline-0 roboto text-lg py-2 px-4 border-b border-[#BBBFC1]"
+          className={clsx(
+            "w-full focus-visible:outline-0 roboto text-lg py-2 px-4 border-b border-[#BBBFC1]",
+            StartAdornment && "pl-8",
+          )}
         />
         {isPassword && (
           <EyeIcon

@@ -9,4 +9,5 @@ export type SvgIconProps = {
 export type SelectItem = {
   label: string;
   value: string;
+  icon?: (props: SvgIconProps) => JSX.Element;
 };
