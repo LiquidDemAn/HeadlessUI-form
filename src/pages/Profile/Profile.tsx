@@ -5,6 +5,7 @@ import { HandleChangeProfileStep, ProfileStepsEnum } from "pages/Profile/types";
 import { profileSteps } from "pages/Profile/utils";
 import PersonalDataStep from "./components/PersonalDataStep";
 import ContactStep from "./components/ContactsStep";
+import DeliveryAddressStep from "./components/DeliveryAddressStep";
 
 const Profile = () => {
   const [step, setStep] = useState(ProfileStepsEnum.PERSONAL_DATA);
@@ -26,6 +27,7 @@ const Profile = () => {
         {step === ProfileStepsEnum.CONTACTS && (
           <ContactStep handleChangeStep={handleChangeStep} />
         )}
+        {step === ProfileStepsEnum.DELIVERY_ADDRESS && <DeliveryAddressStep />}
       </div>
     </div>
   );

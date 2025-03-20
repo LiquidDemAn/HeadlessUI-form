@@ -38,7 +38,7 @@ const InputController: FC<InputControllerProps> = ({
           placeholder={placeholder}
           onChange={field.onChange}
           className={clsx(
-            "w-full focus-visible:outline-0 roboto text-lg py-2 px-4 border-b border-[#BBBFC1]",
+            "w-full focus-visible:outline-0 roboto text-lg py-2 max-h-11 px-4 border-b border-[#BBBFC1]",
             StartAdornment && "pl-8",
           )}
         />

@@ -7,4 +7,5 @@ export type SelectControllerProps = {
   fullWidth?: boolean;
   listBoxButtonClasses?: string;
   listBoxOptionsClasses?: string;
+  placeholder?: string;
 };

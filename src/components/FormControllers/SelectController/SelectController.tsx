@@ -17,6 +17,7 @@ const SelectController: FC<SelectControllerProps> = ({
   label,
   options,
   fullWidth = true,
+  placeholder,
   listBoxButtonClasses,
 }) => {
   const { field } = useController({ name });
@@ -53,7 +54,11 @@ const SelectController: FC<SelectControllerProps> = ({
           )}
         >
           {selectedOption?.icon && <selectedOption.icon className="mr-4" />}
-          {selectedOption?.label}
+          {placeholder && !selectedOption?.label ? (
+            <p className="roboto text-lg text-[#9A9EA5]">{placeholder}</p>
+          ) : (
+            selectedOption?.label
+          )}
           <ChevronDownIcon aria-hidden="true" className="ml-auto size-3" />
         </ListboxButton>
         <ListboxOptions
