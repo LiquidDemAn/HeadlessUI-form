@@ -16,7 +16,7 @@ const Registration = () => {
   const [step, setStep] = useState(RegistrationStepsEnum.PHONE);
 
   const form = useForm<RegistrationFormType>({
-    defaultValues: { phoneFormat: "+1", phoneNumber: "+1 555 555-1234" },
+    defaultValues: { phoneFormat: "+1" },
   });
 
   const handleChangeStep: HandleChangeRegistrationStep = (step) => () => {

@@ -10,9 +10,9 @@ const CredentialsStep = () => {
   const navigate = useNavigate();
   const { control } = useFormContext<RegistrationFormType>();
 
-  const phoneNumber = useWatch({
+  const [phoneNumber, phoneFormat] = useWatch({
     control,
-    name: "phoneNumber",
+    name: ["phoneNumber", "phoneFormat"],
   });
 
   const handleRegister = () => {
@@ -22,7 +22,7 @@ const CredentialsStep = () => {
   return (
     <>
       <FormWrapper size="small">
-        <p className="roboto text-lg text-[#242426] mb-0.5">{phoneNumber}</p>
+        <p className="roboto text-lg text-[#242426] mb-0.5">{`${phoneFormat} ${phoneNumber}`}</p>
         <p className="text-[13px] text-[#575F6E]">
           <TickIcon className="inline-block mr-1" />
           Number confirmed

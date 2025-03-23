@@ -23,7 +23,7 @@ const Button: FC<PropsWithChildren<ButtonProps>> = ({
         variant === "contained" &&
           "px-8 bg-[#007AFF] text-white border-0! popins",
         variant === "text" && "border-0 pl-0 pr-4 py-1",
-        disabled && "opacity-50 cursor-default ",
+        disabled && "opacity-50 cursor-default!",
       )}
     >
       <div className="flex flex-row gap-2">

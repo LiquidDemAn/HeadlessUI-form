@@ -5,9 +5,17 @@ import SelectController from "components/FormControllers/SelectController";
 import InputController from "components/FormControllers/InputController";
 import Button from "components/Button";
 import { FC } from "react";
-import { RegistrationStepsEnum, StepProps } from "pages/Registration/types";
+import {
+  RegistrationFormType,
+  RegistrationStepsEnum,
+  StepProps,
+} from "pages/Registration/types";
+import { useFormContext, useWatch } from "react-hook-form";
 
 const PhoneStep: FC<StepProps> = ({ handleChangeStep }) => {
+  const { control } = useFormContext<RegistrationFormType>();
+  const phoneNumber = useWatch({ control, name: "phoneNumber" });
+
   return (
     <>
       <div className="rounded-lg p-4 bg-[#F0F2F4]">
@@ -31,7 +39,10 @@ const PhoneStep: FC<StepProps> = ({ handleChangeStep }) => {
           <InputController name="phoneNumber" />
         </div>
       </FormWrapper>
-      <Button onClick={handleChangeStep(RegistrationStepsEnum.CODE)}>
+      <Button
+        disabled={(phoneNumber?.length || 0) < 8}
+        onClick={handleChangeStep(RegistrationStepsEnum.CODE)}
+      >
         Send code
       </Button>
     </>

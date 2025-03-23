@@ -7,10 +7,18 @@ import Button from "components/Button";
 import ArrowRightIcon from "components/SvgIcons/ArrowRightIcon";
 import { FC } from "react";
 import { ProfileStepProps, ProfileStepsEnum } from "pages/Profile/types";
-import { FormProvider, useForm } from "react-hook-form";
+import { FormProvider, useForm, useWatch } from "react-hook-form";
+import { useCountriesApi } from "hooks/useCountriesApi";
 
 const PersonalDataStep: FC<ProfileStepProps> = ({ handleChangeStep }) => {
   const form = useForm();
+
+  const country = useWatch({
+    control: form.control,
+    name: "country",
+  });
+
+  const { countryOptions, cityOptions } = useCountriesApi(country);
 
   return (
     <FormProvider {...form}>
@@ -37,17 +45,18 @@ const PersonalDataStep: FC<ProfileStepProps> = ({ handleChangeStep }) => {
         </div>
         <InputController name="firstName" label="First name" />
         <InputController name="secondName" label="Second name" />
-        <div className="flex flex-row gap-8">
+        <SelectController
+          name="dateOfBirth"
+          label="Date of Birth"
+          options={[{ label: "12.05.1992", value: "12.05.1992" }]}
+        />
+        <div className="flex flex-row gap-8 ">
           <SelectController
-            name="dateOfBirth"
-            label="Date of Birth"
-            options={[{ label: "12.05.1992", value: "12.05.1992" }]}
+            name="country"
+            label="Country"
+            options={countryOptions}
           />
-          <SelectController
-            name="placeOfBirth"
-            label="Place of Birth"
-            options={[{ label: "New York, USA", value: "New York, USA" }]}
-          />
+          <SelectController name="city" label="City" options={cityOptions} />
         </div>
       </FormWrapper>
       <FormWrapper size="small">

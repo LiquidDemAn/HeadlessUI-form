@@ -1,12 +1,20 @@
-import { FormProvider, useForm } from "react-hook-form";
+import { FormProvider, useForm, useWatch } from "react-hook-form";
 import InputController from "components/FormControllers/InputController";
 import SelectController from "components/FormControllers/SelectController";
 import FormWrapper from "components/FormWrapper";
 import Button from "components/Button";
 import TickIcon from "components/SvgIcons/TickIcon";
+import { useCountriesApi } from "hooks/useCountriesApi";
 
 const DeliveryAddressStep = () => {
   const form = useForm();
+
+  const country = useWatch({
+    control: form.control,
+    name: "country",
+  });
+
+  const { countryOptions, cityOptions } = useCountriesApi(country);
 
   return (
     <FormProvider {...form}>
@@ -24,10 +32,14 @@ const DeliveryAddressStep = () => {
           name="city"
           label="City"
           placeholder="New York"
-          options={[{ label: "New York", value: "New York" }]}
+          options={cityOptions}
         />
         <div className="flex flex-row gap-8">
-          <SelectController name="country" label="Country" options={[]} />
+          <SelectController
+            name="country"
+            label="Country"
+            options={countryOptions}
+          />
           <InputController name="zipCode" label="Zip code" />
         </div>
         <InputController name="optional" label="Optional" />

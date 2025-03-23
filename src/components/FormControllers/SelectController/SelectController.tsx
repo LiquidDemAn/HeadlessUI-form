@@ -63,7 +63,7 @@ const SelectController: FC<SelectControllerProps> = ({
         </ListboxButton>
         <ListboxOptions
           anchor="bottom"
-          className="bg-white border min-w-20"
+          className="bg-white border min-w-20 max-h-20 my-2"
           style={{ width: buttonRef.current?.clientWidth }}
         >
           {options.map(({ label, icon: Icon, value }) => (

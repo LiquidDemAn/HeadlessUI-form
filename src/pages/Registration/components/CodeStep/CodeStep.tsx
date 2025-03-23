@@ -12,12 +12,12 @@ import Button from "components/Button";
 import RetryIcon from "components/SvgIcons/RetryIcon";
 
 const CodeStep: FC<StepProps> = ({ handleChangeStep }) => {
-  const [otp, setOtp] = useState("1234");
+  const [otp, setOtp] = useState("");
   const { control } = useFormContext<RegistrationFormType>();
 
-  const phoneNumber = useWatch({
+  const [phoneNumber, phoneFormat] = useWatch({
     control,
-    name: "phoneNumber",
+    name: ["phoneNumber", "phoneFormat"],
   });
 
   useEffect(() => {
@@ -31,7 +31,7 @@ const CodeStep: FC<StepProps> = ({ handleChangeStep }) => {
   return (
     <>
       <FormWrapper size="small">
-        <p className="roboto text-lg text-[#242426] mb-0.5">{phoneNumber}</p>
+        <p className="roboto text-lg text-[#242426] mb-0.5">{`${phoneFormat} ${phoneNumber}`}</p>
         <p className="text-xs text-[#575F6E]">Number not confirmed yet</p>
         <div
           className="absolute right-4 bottom-4 cursor-pointer"
@@ -64,7 +64,7 @@ const CodeStep: FC<StepProps> = ({ handleChangeStep }) => {
         </div>
         <Button
           variant="text"
-          className="flex gap-2 items-center min-w-[144px] px-3! text-[#007AFF]!"
+          className="w-full flex gap-2 items-center max-w-[152px] px-3! text-[#007AFF]!"
         >
           <RetryIcon />
           Send again
